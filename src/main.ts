@@ -12,7 +12,7 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: ['http://localhost:5173'],
+    origin: ['https://www.melsvagharshyan.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     credentials: true, // if you use cookies or authorization headers
   });
