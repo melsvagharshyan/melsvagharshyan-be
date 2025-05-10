@@ -4,14 +4,16 @@ import { MessagesModule } from './messages/messages.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
+import { RecommendationModule } from './recommendation/recommendation.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
     MongooseModule.forRoot(
-      'mongodb+srv://melsvagharshyan18:mels7878@cluster0.jedxf.mongodb.net',
+      `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.jedxf.mongodb.net`,
     ),
     MessagesModule,
+    RecommendationModule,
   ],
   controllers: [AppController],
   providers: [AppService],
