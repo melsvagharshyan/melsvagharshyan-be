@@ -5,6 +5,8 @@ import {
   Get,
   HttpException,
   HttpStatus,
+  Patch,
+  Param,
 } from '@nestjs/common';
 import { RecommendationService } from './recommendation.service';
 import { Recommendation } from 'src/schemas/recommendation.schema';
@@ -44,5 +46,16 @@ export class RecommendationController {
         HttpStatus.INTERNAL_SERVER_ERROR,
       );
     }
+  }
+
+  // recommendation.controller.ts
+  @Patch(':_id/approve')
+  async approveRecommendation(@Param('_id') id: string) {
+    return this.recommendationService.approve(id);
+  }
+
+  @Get('approved')
+  async getApprovedRecommendations() {
+    return this.recommendationService.findAllApproved();
   }
 }

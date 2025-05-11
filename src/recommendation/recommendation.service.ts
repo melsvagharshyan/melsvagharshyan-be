@@ -34,4 +34,18 @@ export class RecommendationService {
   async getAllRecommendations(): Promise<Recommendation[]> {
     return await this.recommendationModel.find().exec();
   }
+
+  // recommendation.service.ts
+  async approve(_id: string): Promise<Recommendation | null> {
+    return this.recommendationModel.findByIdAndUpdate(
+      _id,
+      { approved: true },
+      { new: true },
+    );
+  }
+
+  // recommendation.service.ts
+  async findAllApproved(): Promise<Recommendation[]> {
+    return this.recommendationModel.find({ approved: true });
+  }
 }

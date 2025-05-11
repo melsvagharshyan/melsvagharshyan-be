@@ -6,6 +6,7 @@ export interface Recommendation extends Document {
   recommendation: string;
   stars: number;
   image?: string;
+  approved: boolean; // ✅ new field
 }
 
 export const RecommendationSchema = new Schema({
@@ -14,4 +15,5 @@ export const RecommendationSchema = new Schema({
   recommendation: { type: String, required: true },
   stars: { type: Number, required: true },
   image: { type: String, required: false },
+  approved: { type: Boolean, default: false }, // ✅ new field
 });

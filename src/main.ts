@@ -12,8 +12,13 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: ['https://www.melsvagharshyan.com', 'http://localhost:5173'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    origin: [
+      'https://www.melsvagharshyan.com',
+      'https://melsvagharshyan-admin-fe.vercel.app',
+      'http://localhost:5173',
+      'http://localhost:5174',
+    ],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true, // if you use cookies or authorization headers
   });
   await app.listen(process.env.PORT ?? 3000);
