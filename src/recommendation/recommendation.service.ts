@@ -48,4 +48,10 @@ export class RecommendationService {
   async findAllApproved(): Promise<Recommendation[]> {
     return this.recommendationModel.find({ approved: true });
   }
+
+  // Delete a recommendation by ID
+  async deleteRecommendationById(_id: string): Promise<{ deleted: boolean }> {
+    const result = await this.recommendationModel.deleteOne({ _id });
+    return { deleted: result.deletedCount > 0 };
+  }
 }

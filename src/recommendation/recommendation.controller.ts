@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Patch,
   Param,
+  Delete,
 } from '@nestjs/common';
 import { RecommendationService } from './recommendation.service';
 import { Recommendation } from 'src/schemas/recommendation.schema';
@@ -57,5 +58,28 @@ export class RecommendationController {
   @Get('approved')
   async getApprovedRecommendations() {
     return this.recommendationService.findAllApproved();
+  }
+
+  @Delete(':_id/delete')
+  async delete(@Param('_id') id: string) {
+    try {
+      const result =
+        await this.recommendationService.deleteRecommendationById(id);
+      if (!result.deleted) {
+        throw new HttpException(
+          'Recommendation not found',
+          HttpStatus.NOT_FOUND,
+        );
+      }
+      return { message: 'Deleted successfully' };
+    } catch (error) {
+      throw new HttpException(
+        {
+          message: 'Failed to delete recommendation',
+          error: error.message || error,
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 }
