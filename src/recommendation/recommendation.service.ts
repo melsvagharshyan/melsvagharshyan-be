@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { handleUpload } from 'src/cloudinary';
+import { handleDeleteImage, handleUpload } from 'src/cloudinary';
 import { Recommendation } from 'src/schemas/recommendation.schema';
 
 @Injectable()
@@ -15,12 +15,18 @@ export class RecommendationService {
   async createRecommendation(
     data: Partial<Recommendation>,
   ): Promise<Recommendation> {
-    let image = ''; // Set the default value to null in case image is not provided
+    let image = {
+      public_id: '',
+      url: '',
+    };
 
     // If an image is provided, upload it to Cloudinary
     if (data?.image) {
       const result = await handleUpload(data?.image as any);
-      image = result.secure_url;
+      image = {
+        public_id: result.public_id,
+        url: result.secure_url,
+      };
     }
 
     // Create a new recommendation, optionally including the image
@@ -51,7 +57,14 @@ export class RecommendationService {
 
   // Delete a recommendation by ID
   async deleteRecommendationById(_id: string): Promise<{ deleted: boolean }> {
+    const item = await this.recommendationModel.findById(_id);
+
+    const imageId = item?.image?.public_id || '';
+
+    await handleDeleteImage(imageId);
+
     const result = await this.recommendationModel.deleteOne({ _id });
+
     return { deleted: result.deletedCount > 0 };
   }
 }

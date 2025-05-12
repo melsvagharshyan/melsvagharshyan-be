@@ -1,3 +1,4 @@
+import { Logger } from '@nestjs/common';
 import { v2 as cloudinary } from 'cloudinary';
 import 'dotenv/config';
 
@@ -13,4 +14,8 @@ export const handleUpload = async (file: string) => {
     folder: 'reccomendations',
   });
   return res;
+};
+
+export const handleDeleteImage = async (imageId: string) => {
+  await cloudinary.uploader.destroy(imageId);
 };

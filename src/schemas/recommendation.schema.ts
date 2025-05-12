@@ -5,8 +5,11 @@ export interface Recommendation extends Document {
   profession: string;
   recommendation: string;
   stars: number;
-  image?: string;
-  approved: boolean; // ✅ new field
+  image?: {
+    public_id: string;
+    url: string;
+  };
+  approved: boolean;
 }
 
 export const RecommendationSchema = new Schema({
@@ -14,6 +17,9 @@ export const RecommendationSchema = new Schema({
   profession: { type: String, required: true },
   recommendation: { type: String, required: true },
   stars: { type: Number, required: true },
-  image: { type: String, required: false },
-  approved: { type: Boolean, default: false }, // ✅ new field
+  image: {
+    public_id: { type: String, required: false },
+    url: { type: String, required: false },
+  },
+  approved: { type: Boolean, default: false },
 });
