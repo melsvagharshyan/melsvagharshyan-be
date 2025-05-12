@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import { RecommendationService } from './recommendation.service';
 import { Recommendation } from 'src/schemas/recommendation.schema';
-import axios from 'axios';
 
 @Controller('recommendations')
 export class RecommendationController {
@@ -22,16 +21,6 @@ export class RecommendationController {
     try {
       const created =
         await this.recommendationService.createRecommendation(data);
-
-      const botToken = process.env.TELEGRAM_BOT_TOKEN;
-      const chatId = process.env.TELEGRAM_CHAT_ID;
-
-      const message = `🆕 New Recommendation Created!       👤 By: ${data?.fullName}`;
-
-      await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-        chat_id: chatId,
-        text: message,
-      });
 
       return { message: 'Created', data: created };
     } catch (error) {
