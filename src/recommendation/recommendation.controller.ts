@@ -28,16 +28,10 @@ export class RecommendationController {
 
       const message = `🆕 New Recommendation Created!       👤 By: ${data?.fullName}`;
 
-      await axios.post(
-        `https://api.telegram.org/bot${botToken}/sendMessage`,
-        {
-          chat_id: chatId,
-          text: message,
-        },
-        {
-          timeout: 10000,
-        },
-      );
+      await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+        chat_id: chatId,
+        text: message,
+      });
 
       return { message: 'Created', data: created };
     } catch (error) {
