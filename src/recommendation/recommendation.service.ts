@@ -61,7 +61,9 @@ export class RecommendationService {
 
     const imageId = item?.image?.public_id || '';
 
-    await handleDeleteImage(imageId);
+    if (imageId) {
+      await handleDeleteImage(imageId);
+    }
 
     const result = await this.recommendationModel.deleteOne({ _id });
 
