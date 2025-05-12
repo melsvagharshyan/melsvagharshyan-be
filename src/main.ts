@@ -16,6 +16,7 @@ async function bootstrap() {
       'https://www.melsvagharshyan.com',
       'https://melsvagharshyan-admin-fe.vercel.app',
       'https://site--melsvagharshyan-be--69z8m7t7vlwy.code.run',
+      'https://melsvagharshyan-be.sliplane.app',
       'http://localhost:5173',
       'http://localhost:5174',
     ],
