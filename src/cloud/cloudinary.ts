@@ -7,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export const handleUpload = async (file: string) => {
+export const handleUpload = async (file: any) => {
   const res = await cloudinary.uploader.upload(file, {
     resource_type: 'image',
     folder: 'reccomendations',

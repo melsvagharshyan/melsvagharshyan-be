@@ -1,11 +1,7 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { handleDeleteImage, handleUpload } from 'src/cloud/cloudinary';
-import {
-  handleDeleteImagekitImage,
-  handleUploadImagekit,
-} from 'src/cloud/imagekit';
 import { Recommendation } from 'src/schemas/recommendation.schema';
 
 @Injectable()
@@ -24,8 +20,8 @@ export class RecommendationService {
     };
 
     if (data?.image) {
-      const result = await handleUploadImagekit(data?.image);
-      // const result = await handleUpload(data?.image as any);
+      // const result = await handleUploadImagekit(data?.image);
+      const result = await handleUpload(data?.image);
       image = {
         public_id: result.fileId,
         url: result.url,
@@ -60,7 +56,8 @@ export class RecommendationService {
     const imageId = item?.image?.public_id || '';
 
     if (imageId) {
-      await handleDeleteImagekitImage(imageId);
+      // await handleDeleteImagekitImage(imageId);
+      await handleDeleteImage(imageId);
     }
 
     const result = await this.recommendationModel.deleteOne({ _id });
