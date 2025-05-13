@@ -23,7 +23,7 @@ export class RecommendationService {
       // const result = await handleUploadImagekit(data?.image);
       const result = await handleUpload(data?.image);
       image = {
-        public_id: result.fileId,
+        public_id: result.public_id,
         url: result.url,
       };
     }
