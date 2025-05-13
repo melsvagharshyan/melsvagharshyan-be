@@ -15,6 +15,7 @@ async function bootstrap() {
     origin: [
       'https://www.melsvagharshyan.com',
       'https://melsvagharshyan-admin-fe.vercel.app',
+      'https://melsvagharshyan.onrender.com',
       'http://localhost:5173',
       'http://localhost:5174',
     ],
