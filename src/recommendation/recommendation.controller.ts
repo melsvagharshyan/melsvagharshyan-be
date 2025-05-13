@@ -50,7 +50,6 @@ export class RecommendationController {
     }
   }
 
-  // recommendation.controller.ts
   @Patch(':_id/approve')
   async approveRecommendation(@Param('_id') id: string) {
     return this.recommendationService.approve(id);
