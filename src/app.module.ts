@@ -8,10 +8,19 @@ import { RecommendationModule } from './recommendation/recommendation.module';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      envFilePath: '.env',
+    }),
     MongooseModule.forRoot(
       `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@cluster0.jedxf.mongodb.net`,
     ),
+    // MongooseModule.forRoot(
+    //   `mongodb://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@shinkansen.proxy.rlwy.net:30629`,
+    // ),
+    // MongooseModule.forRoot(
+    //   `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASS}@recommendations.global.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000`,
+    // ),
     MessagesModule,
     RecommendationModule,
   ],

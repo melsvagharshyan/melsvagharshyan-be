@@ -8,7 +8,7 @@ export interface Recommendation extends Document {
   image?: {
     public_id: string;
     url: string;
-  };
+  } & string;
   approved: boolean;
 }
 
