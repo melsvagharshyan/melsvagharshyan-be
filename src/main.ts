@@ -15,7 +15,7 @@ async function bootstrap() {
     origin: [
       'https://www.melsvagharshyan.com',
       'https://melsvagharshyan-admin-fe.vercel.app',
-      'https://zealous-ocean-052f17e1e.6.azurestaticapps.net',
+      'https://thankful-sky-0f12d8a10.6.azurestaticapps.net',
       'https://melsvagharshyan.onrender.com',
       'http://localhost:3001',
       'http://localhost:5173',
