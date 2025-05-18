@@ -2,17 +2,17 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { handleDeleteImage, handleUpload } from 'src/cloud/cloudinary';
-import { s3 } from 'src/cloud/s3';
+// import { s3 } from 'src/cloud/s3';
 import { Recommendation } from 'src/schemas/recommendation.schema';
-import { DeleteObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import { AzureBlobService } from 'src/upload/azure-blob.service';
+// import { DeleteObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+// import { AzureBlobService } from 'src/upload/azure-blob.service';
 
 @Injectable()
 export class RecommendationService {
   constructor(
     @InjectModel('Recommendation')
     private recommendationModel: Model<Recommendation>,
-    private readonly azureBlobService: AzureBlobService,
+    // private readonly azureBlobService: AzureBlobService,
   ) {}
 
   async createRecommendation(
