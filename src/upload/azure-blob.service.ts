@@ -37,6 +37,6 @@ export class AzureBlobService {
 
   private getExtensionFromBase64(base64: string): string {
     const match = base64.match(/^data:image\/(\w+);base64,/);
-    return match ? match[1] : 'png'; // default to png if not found
+    return match ? match[1] : 'png'; // default to png
   }
 }
