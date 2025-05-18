@@ -2,6 +2,7 @@
 import { Injectable } from '@nestjs/common';
 import { BlobServiceClient } from '@azure/storage-blob';
 import { v4 as uuid } from 'uuid';
+import 'dotenv/config';
 
 @Injectable()
 export class AzureBlobService {

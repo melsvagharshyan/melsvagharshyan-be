@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { RecommendationModule } from './recommendation/recommendation.module';
+import 'dotenv/config';
 
 @Module({
   imports: [
