@@ -3,7 +3,6 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { RecommendationController } from './recommendation.controller';
 import { RecommendationService } from './recommendation.service';
 import { RecommendationSchema } from 'src/schemas/recommendation.schema';
-import { AzureBlobService } from 'src/upload/azure-blob.service';
 
 @Module({
   imports: [
@@ -12,6 +11,6 @@ import { AzureBlobService } from 'src/upload/azure-blob.service';
     ]),
   ],
   controllers: [RecommendationController],
-  providers: [RecommendationService, AzureBlobService],
+  providers: [RecommendationService],
 })
 export class RecommendationModule {}
