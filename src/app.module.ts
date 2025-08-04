@@ -5,6 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { RecommendationModule } from './recommendation/recommendation.module';
+import { FeedbackModule } from './feedback/feedback.module';
 import 'dotenv/config';
 
 @Module({
@@ -18,6 +19,7 @@ import 'dotenv/config';
     ),
     MessagesModule,
     RecommendationModule,
+    FeedbackModule,
   ],
   controllers: [AppController],
   providers: [AppService],
