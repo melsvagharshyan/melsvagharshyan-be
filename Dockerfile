@@ -10,7 +10,9 @@ WORKDIR /app
 # Copy package files and install dependencies
 COPY pnpm-lock.yaml ./
 COPY package.json ./
-RUN pnpm install
+
+# Install dependencies, including Nest CLI
+RUN pnpm add -D @nestjs/cli && pnpm install
 
 # Copy the rest of the app
 COPY . .
@@ -21,5 +23,5 @@ RUN pnpm build
 # Expose NestJS default port
 EXPOSE 3000
 
-# Start the app (for prod)
-CMD ["pnpm", "start", "run", "npm"]
+# Start the app in production
+CMD ["pnpm", "start"]
