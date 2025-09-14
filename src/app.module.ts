@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Module } from '@nestjs/common';
 import { RecommendationModule } from './recommendation/recommendation.module';
 import 'dotenv/config';
+import { CoverLetterModule } from './cover-letter/cover-letter.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import 'dotenv/config';
     ),
     MessagesModule,
     RecommendationModule,
+    CoverLetterModule,
   ],
   controllers: [AppController],
   providers: [AppService],

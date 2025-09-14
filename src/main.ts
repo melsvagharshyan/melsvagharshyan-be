@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://www.melsvagharshyan.com',
+      'https://mels-resume-fe.vercel.app',
       'https://melsvagharshyan-admin-fe.vercel.app',
       'https://thankful-sky-0f12d8a10.6.azurestaticapps.net',
       'https://melsvagharshyan.onrender.com',
@@ -23,6 +24,6 @@ async function bootstrap() {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     credentials: true, // if you use cookies or authorization headers
   });
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT ?? 5000);
 }
 bootstrap();
