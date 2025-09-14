@@ -19,6 +19,7 @@ async function bootstrap() {
       'https://thankful-sky-0f12d8a10.6.azurestaticapps.net',
       'https://melsvagharshyan.onrender.com',
       'http://localhost:3001',
+      'http://localhost:3000',
       'http://localhost:5173',
     ],
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
